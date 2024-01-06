@@ -32,12 +32,16 @@ public class PlayerController : MonoBehaviour
         void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        animator.SetFloat("horizontal", Input.GetAxis("Horizontal"));
         verticalInput = Input.GetAxis("Vertical");
+        animator.SetFloat("horizontal", Input.GetAxis("Horizontal"));
         animator.SetFloat("vertical", Input.GetAxis("Vertical"));
-        if (Input.GetKeyDown(KeyCode.Alpha1)) transform.position = new Vector3(10, 2, 10);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) transform.position = new Vector3(0, 2, -10);
-        if (Input.GetKeyDown(KeyCode.Alpha5)) UseSkill(1);
+
+        //if (Input.GetKeyDown(KeyCode.Alpha1)) transform.position = new Vector3(10, 2, 10);
+        //if (Input.GetKeyDown(KeyCode.Alpha2)) transform.position = new Vector3(0, 2, -10);
+        if (Input.GetKeyDown(KeyCode.Alpha1)) UseSkill(1);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) UseSkill(2);
+        if (Input.GetKeyDown(KeyCode.Alpha3)) UseSkill(3);
+        if (Input.GetKeyDown(KeyCode.Alpha4)) UseSkill(4);
 
         void UseSkill(int skillNumber)
         {
@@ -93,7 +97,6 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Jump");
         }
 
-    //Aby dzia³a³ skok nale¿y pod³odze nadaæ tag Ground
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
@@ -101,5 +104,6 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         }
     }
+    
 }
 
